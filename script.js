@@ -63,38 +63,18 @@ function createRandomCircle() {
   const {width , height} = board.getBoundingClientRect()
   const x = getRandomSize(0 , width - size)
   const y = getRandomSize(0 , height - size)
+  const index = Math.floor( Math.random() * colors.length)
+  const colorNew =  colors[index]
 
   circle.classList.add('circle')
   circle.style.width = `${size}px`
   circle.style.height = `${size}px`
   circle.style.top = `${y}px`
   circle.style.left = `${x}px`
+  circle.style.background = colorNew
 
   board.append(circle)
-  // color
-  const index = Math.floor( Math.random() * colors.length)
-  return  colors[index]
 }
-
 function getRandomSize(min ,max){
   return Math.round(Math.random() * (max - min) + min)
 }
-
-// color
-
-function setColor(e) {
-  const color = colorGenerate()
-  e.style.backgroundColor = color
-  e.style.boxShadow = `0 0 2px ${color} , 0 0 10px ${color}`
-}
-function removeColor(e) {
-  e.style.backgroundColor = '#1d1d1d'
-  e.style.boxShadow = `0 0 2px #000`
-
-}
-
-// function colorGenerate() {
-//   const index = Math.floor( Math.random() * colors.length)
-//   return  colors[index]
-
-// }
